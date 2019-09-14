@@ -1,0 +1,77 @@
+<div class="principal">
+  <p class="bold titulos">Departamentos</p>
+  <p>Contamos con 4 departamentos de 4 personas, 2 con vista al mar.</p>
+
+  <mat-card>
+    <mat-card-title>
+      <p class="natural-text">Departamentos</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-8">
+          <img class="imagen-medio" src="assets/img/departamento/departamento-11.jpg">
+        </div>
+        <div class="col-md-4">
+          <p>Excelente ubicacion</p>
+          <p>Muy comodos</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+   
+  <mat-card>
+      <mat-card-title>
+          <p class="natural-text">Terraza</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-8">
+            <mat-carousel timings="550ms ease-in" [autoplay]="true" interval="3000" color="accent" maxWidth="auto"
+            proportion="50" slides="4" [loop]="true" [hideArrows]="true" [hideIndicators]="true" [useKeyboard]="true"
+            [useMouseWheel]="false" orientation="ltr">
+            <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index" [image]="slide.image"
+              overlayColor="#00000040" [hideOverlay]="false">
+            </mat-carousel-slide>
+        </mat-carousel>
+        </div>
+        <div class="col-md-4">
+          <p>Buena Vista</p>
+          <p>Comodos asientos</p>
+        </div>
+    </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      <p class="natural-text">Interior</p>
+    </mat-card-title>
+    <mat-card-subtitle>
+  
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-carousel timings="550ms ease-in" [autoplay]="true" interval="3000" color="accent" maxWidth="auto"
+            proportion="50" slides="7" [loop]="true" [hideArrows]="true" [hideIndicators]="true" [useKeyboard]="true"
+            [useMouseWheel]="false" orientation="ltr">
+            <mat-carousel-slide #matCarouselSlide1 *ngFor="let slideIn of slidesInside; let i = index" [image]="slideIn.image"
+              overlayColor="#00000040" [hideOverlay]="false">
+            </mat-carousel-slide>
+          </mat-carousel>
+        </div>
+        <div class="col-md-4">
+          <p>comentario 1</p>
+          <p>comentario 2</p>
+          <p>comentario 3</p>          
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

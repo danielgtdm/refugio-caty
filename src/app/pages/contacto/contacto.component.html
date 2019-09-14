@@ -1,0 +1,88 @@
+<div class="principal">
+  <p class="bold titulos">Contacto</p>
+
+  <mat-card>
+    <mat-card-title>
+      Nuestra Informacion
+    </mat-card-title>
+    <mat-card-subtitle>
+      pulsa para abrir
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item><a class="enlace" title="Abrir Google Maps" target="_blank"
+            href="https://maps.google.com/maps?ll=-40.5820071,-73.7349141,17&z=17&t=m&hl=en&gl=CL&mapclient=embed&q=Hostal%20Caty"><img
+              src="assets/img/icons/google.png"> Bahía Mansa Km 63,
+            San Juan de la Costa</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> <a title="+56956420105" href="tel:+56956420105"><img
+              src="assets/img/icons/telephone-symbol-button.png"> +56956420105</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><a class="enlace" title="+56990416439" href="https://api.whatsapp.com/send?phone=56990416439"
+            target="_blank"><img src="assets/img/icons/whatsapp.png"> +56990416439</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><a title="contacto@refugiodecaty.cl" href="mailto:contacto@refugiodecaty.cl"><img
+              src="assets/img/icons/gmail.png"> contacto@refugiodecaty.cl</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><a title="facebook" href="facebook.com"><img
+          src="assets/img/icons/facebook.png"> Refugio de Caty</a></mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>
+      Solicita tu Reservacion
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>ahora mismo</p>
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="texto-centrado">
+
+        <form (ngSubmit)="contactForm(form.value)" #form="ngForm" class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Tu E-mail"  name="email" ngModel>
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Por favor ingresa un E-mail válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              E-mail es requerido
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nombres y Apellidos" name="nombre" ngModel>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <mat-label>Tipo de Servicio</mat-label>
+            <mat-select name="asunto" ngModel>
+              <mat-option *ngFor="let servicio of servicios" [value]="servicio.value">
+                {{servicio.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de Inicio -->"
+              (dateInput)="fechaInicioSelected('input', $event)" name="inicio" ngModel>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker1" placeholder="Fecha Fin -->"
+              (dateInput)="fechaFinSelected('input', $event)" name="fin" ngModel>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Escribenos un Mensaje" name="mensaje" ngModel></textarea>
+          </mat-form-field>
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

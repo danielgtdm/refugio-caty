@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.principal{
+    width: 100%;
+    margin-top: 2rem;
+    text-align: center;
+}
+.titulos{
+    margin-top: 2rem;
+    font-size: 2em;   
+    color: #795548; 
+}
+.sub-titulos{
+    margin-top: 2rem;
+    font-size: 24px;   
+    color: #795548; 
+}
+.bold{
+    font-weight: 700!important;
+}
+
+.natural-text{
+    color: #848484!important;
+}
+
+mat-card{
+    margin: auto;
+    width: 90%;
+    display: block;
+    margin-top: 2rem;
+}
+mat-card-content{
+    text-align: center;
+    margin-top: 30px;
+}
+mat-divider{
+    max-width: 70%;
+}
+a:link{
+    text-decoration: none;
+    color: black;
+}
+.enlace{
+    color: black;
+}
+.texto-centrado{
+    margin: auto;
+    width: 80%;
+    display: block;
+    text-align: center;
+}
