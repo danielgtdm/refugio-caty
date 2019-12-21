@@ -6,6 +6,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import Swal from 'sweetalert2';
 
 import { MessageService } from './../../services/message.service';
+import { DataSource } from '@angular/cdk/table';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -39,7 +40,7 @@ export class ContactoComponent implements OnInit {
 
   emailFormControl = new FormControl('', [
     Validators.required,
-    Validators.email,
+    Validators.email, 
   ]);
 
   matcher = new MyErrorStateMatcher();
@@ -56,15 +57,18 @@ export class ContactoComponent implements OnInit {
     }
 
   ngOnInit() {
+    
   }
 
   fechaInicioSelected(type: string, event: MatDatepickerInputEvent<Date>){
+    
 
   }
 
   fechaFinSelected(type: string, event: MatDatepickerInputEvent<Date>){
 
   }
+
 
 
 }

@@ -1,91 +1,115 @@
 <div class="principal">
   <p class="bold titulos">Contacto</p>
 
-  <mat-card>
-    <mat-card-title>
-      Nuestra Informacion
-    </mat-card-title>
-    <mat-card-subtitle>
-      pulsa para abrir
-    </mat-card-subtitle>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item><a class="enlace" title="Abrir Google Maps" target="_blank"
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2">Nuestra Información<br/><small>pulsa para abrir</small></th>
+        </tr>
+      </thead>
+      <tbody style="text-align: left;">
+        <tr>
+          <td>
+            <a class="enlace" title="Abrir Google Maps" target="_blank"
             href="https://maps.google.com/maps?ll=-40.5820071,-73.7349141,17&z=17&t=m&hl=en&gl=CL&mapclient=embed&q=Hostal%20Caty"><img
-              src="assets/img/icons/google.png"> Bahía Mansa Km 63,
-            San Juan de la Costa</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> <a title="+56956420105" href="tel:+56956420105"><img
-              src="assets/img/icons/telephone-symbol-button.png"> +56956420105</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item><a title="yessyxcata@gmail.com" href="mailto:yessyxcata@gmail.com"><img
-              src="assets/img/icons/gmail.png"> yessyxcata@gmail.com</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item><a title="contacto@refugiodecaty.cl" href="mailto:contacto@refugiodecaty.cl"><img
-              src="assets/img/icons/mail.png"> contacto@refugiodecaty.cl</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item><a title="fanpage" href="https://www.facebook.com/RefugiodeCatyChile"><img
-          src="assets/img/icons/facebook.png"> @RefugiodeCatyChile</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item><a title="instagram" href="https://www.instagram.com/refugiodecaty/"><img
-          src="assets/img/icons/instagram.png"> @refugiodecaty</a></mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+              src="assets/img/icons/google.png"> Bahía Mansa Km 63, San Juan de la Costa</a>
+          </td>
+          <td>
+            <a title="yessyxcata@gmail.com" href="mailto:yessyxcata@gmail.com"><img
+              src="assets/img/icons/gmail.png"> yessyxcata@gmail.com</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a title="+56956420105" href="tel:+56956420105"><img
+              src="assets/img/icons/telephone-symbol-button.png"> +56956420105</a>
+          </td>
+          <td>
+            <a title="contacto@refugiodecaty.cl" href="mailto:contacto@refugiodecaty.cl"><img
+              src="assets/img/icons/mail.png"> contacto@refugiodecaty.cl</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a title="fanpage" href="https://www.facebook.com/RefugiodeCatyChile"><img
+              src="assets/img/icons/facebook.png"> @RefugiodeCatyChile</a>
+          </td>
+          <td>
+            <a title="instagram" href="https://www.instagram.com/refugiodecaty/"><img
+              src="assets/img/icons/instagram.png"> @refugiodecaty</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <mat-card>
-    <mat-card-title>
-      Solicita tu Reserva
-    </mat-card-title>
-    <mat-card-subtitle>
-      <p>ahora mismo</p>
-    </mat-card-subtitle>
-    <mat-card-content>
-      <div class="texto-centrado">
+  <div class="row">
+    <div class="col">
+      <mat-card>
+        <mat-card-title>
+          <small>Escríbenos un mensaje</small>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="texto-centrado">
+    
+            <form (ngSubmit)="contactForm(form.value)" #form="ngForm" class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Tu E-mail"  name="email" ngModel>
+                <mat-hint></mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Por favor ingresa un E-mail válido
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  E-mail es requerido
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nombres y Apellidos" name="nombre" ngModel>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width">
+                <mat-label>Tipo de Servicio</mat-label>
+                <mat-select name="asunto" ngModel>
+                  <mat-option *ngFor="let servicio of servicios" [value]="servicio.value">
+                    {{servicio.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!--
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Fecha de Inicio"
+                  (dateInput)="fechaInicioSelected('input', $event)" name="inicio" ngModel>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker1" placeholder="Fecha Fin"
+                  (dateInput)="fechaFinSelected('input', $event)" name="fin" ngModel>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker1></mat-datepicker>
+              </mat-form-field>
+              -->
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Escríbenos un Mensaje" name="mensaje" ngModel></textarea>
+              </mat-form-field>
+              <button type="submit" class="btn btn-success">Enviar</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-        <form (ngSubmit)="contactForm(form.value)" #form="ngForm" class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Tu E-mail"  name="email" ngModel>
-            <mat-hint></mat-hint>
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Por favor ingresa un E-mail válido
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              E-mail es requerido
-            </mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Nombres y Apellidos" name="nombre" ngModel>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="example-full-width">
-            <mat-label>Tipo de Servicio</mat-label>
-            <mat-select name="asunto" ngModel>
-              <mat-option *ngFor="let servicio of servicios" [value]="servicio.value">
-                {{servicio.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput [matDatepicker]="picker" placeholder="Fecha de Inicio -->"
-              (dateInput)="fechaInicioSelected('input', $event)" name="inicio" ngModel>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput [matDatepicker]="picker1" placeholder="Fecha Fin -->"
-              (dateInput)="fechaFinSelected('input', $event)" name="fin" ngModel>
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker1></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Escríbenos un Mensaje" name="mensaje" ngModel></textarea>
-          </mat-form-field>
-          <button type="submit" class="btn btn-success">Enviar</button>
-        </form>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <div class="col">
+      <mat-card>
+        <mat-card-title>
+          <small>Reserva inmediatamente acá</small><br/>
+          <a target="_blank"href="https://booking.frontdeskmaster.com/?hostelId=j%2FjoP2cvdi5%2FiB7Fc0toPLoVqdvrDsKL" class="btn btn-success" style="color:white;">RESERVAR</a>
+        </mat-card-title>
+      </mat-card>
+    </div>
+  </div>
+  
 
 </div>
